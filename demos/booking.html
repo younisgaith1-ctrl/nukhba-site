@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نموذج حيّ: نظام حجز مواعيد | نخبة ستوديو</title>
+<meta name="description" content="نموذج حيّ لنظام حجز مواعيد: اختر الخدمة والوقت وأكّد الحجز عبر واتساب. من نخبة ستوديو.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://younisgaith1-ctrl.github.io/nukhba-site/demos/booking.html">
+<link rel="icon" type="image/svg+xml" href="../logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#070a0f;--bg2:#0c111a;--card:#111926;--line:#1f2a3a;--acc:#3ee07f;--acc2:#19b45a;--gold:#f0b74a;--text:#eef3f9;--muted:#93a3b8}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  nav{border-bottom:1px solid var(--line);background:rgba(7,10,15,.85);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+  nav b{color:var(--acc)}
+  nav a{color:var(--muted);text-decoration:none;font-size:14.5px}
+  nav a:hover{color:var(--acc)}
+  header{padding:56px 0 26px;text-align:center}
+  h1{font-size:clamp(26px,5vw,40px);font-weight:900}
+  .sub{color:var(--muted);max-width:600px;margin:12px auto 0}
+  .badge{display:inline-block;background:rgba(62,224,127,.12);border:1px solid rgba(62,224,127,.3);color:var(--acc);font-size:13px;font-weight:800;padding:5px 14px;border-radius:99px;margin-bottom:16px}
+  .card{background:linear-gradient(180deg,var(--card),#0e1521);border:1px solid var(--line);border-radius:20px;padding:28px;margin:26px 0}
+  h2{font-size:19px;margin-bottom:16px}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .opt{background:#0b1119;border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,transform .15s}
+  .opt:hover{transform:translateY(-2px)}
+  .opt.sel{border-color:var(--acc);box-shadow:0 0 0 1px rgba(62,224,127,.4)}
+  .opt b{display:block;font-size:15.5px}
+  .opt span{color:var(--acc);font-weight:800;font-size:14px}
+  .opt small{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+  label{display:block;font-size:14px;color:var(--muted);margin:14px 0 6px}
+  input,select,textarea{width:100%;background:#0b1119;border:1px solid var(--line);border-radius:12px;padding:13px;color:var(--text);font-family:inherit;font-size:15px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
+  .btn{display:block;width:100%;text-align:center;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#04120a;font-weight:900;border:none;border-radius:14px;padding:16px;font-size:17px;font-family:inherit;cursor:pointer;margin-top:22px;text-decoration:none}
+  .btn:hover{opacity:.94}
+  .muted{color:var(--muted);font-size:14px;text-align:center;margin-top:14px}
+  footer{border-top:1px solid var(--line);margin-top:50px;padding:30px 0;color:var(--muted);font-size:14px;text-align:center}
+  footer a{color:var(--acc);text-decoration:none}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a href="../">← نخبة ستوديو</a><a href="../en.html">English</a></div></nav>
+<div class="wrap">
+  <header>
+    <div class="badge">نموذج حيّ قابل للتخصيص</div>
+    <h1>نظام حجز مواعيد</h1>
+    <p class="sub">اختر الخدمة والوقت، واملأ بياناتك، وسيصل حجزك مباشرة إلى واتساب النشاط — بدون أي تطبيق إضافي.</p>
+  </header>
+
+  <div class="card">
+    <h2>1) اختر الخدمة</h2>
+    <div class="grid" id="services">
+      <div class="opt sel" data-p="80"><b>استشارة</b><span>80,000 د.ع</span><small>20 دقيقة</small></div>
+      <div class="opt" data-p="150"><b>جلسة كاملة</b><span>150,000 د.ع</span><small>45 دقيقة</small></div>
+      <div class="opt" data-p="250"><b>باقة متقدمة</b><span>250,000 د.ع</span><small>90 دقيقة</small></div>
+      <div class="opt" data-p="50"><b>متابعة</b><span>50,000 د.ع</span><small>15 دقيقة</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2) اختر الموعد وبياناتك</h2>
+    <label>التاريخ</label>
+    <input type="date" id="date">
+    <label>الوقت</label>
+    <select id="time">
+      <option>10:00 صباحًا</option><option>11:30 صباحًا</option>
+      <option>01:00 مساءً</option><option>04:00 مساءً</option>
+      <option>06:30 مساءً</option><option>08:00 مساءً</option>
+    </select>
+    <label>الاسم</label>
+    <input type="text" id="name" placeholder="اسمك الكامل">
+    <label>رقم الهاتف</label>
+    <input type="tel" id="phone" placeholder="07xx xxx xxxx">
+    <label>ملاحظات (اختياري)</label>
+    <textarea id="note" rows="2" placeholder="أي تفاصيل إضافية..."></textarea>
+    <a class="btn" id="send" href="#">📲 تأكيد الحجز عبر واتساب</a>
+    <p class="muted">نموذج تجريبي — يُخصّص بالكامل لأي نشاط (عيادة، صالون، مدرّب، استوديو...).</p>
+  </div>
+
+  <footer>© 2026 نخبة ستوديو · <a href="https://wa.me/9647502331665">اطلب نسختك الآن</a></footer>
+</div>
+<script>
+  var sel = document.querySelectorAll('#services .opt');
+  var svc = 'استشارة', price = '80,000 د.ع';
+  sel.forEach(function(o){
+    o.addEventListener('click', function(){
+      sel.forEach(function(x){x.classList.remove('sel')});
+      o.classList.add('sel');
+      svc = o.querySelector('b').textContent;
+      price = o.querySelector('span').textContent;
+    });
+  });
+  document.getElementById('date').valueAsDate = new Date();
+  document.getElementById('send').addEventListener('click', function(e){
+    e.preventDefault();
+    var d = document.getElementById('date').value;
+    var t = document.getElementById('time').value;
+    var n = document.getElementById('name').value || '—';
+    var p = document.getElementById('phone').value || '—';
+    var note = document.getElementById('note').value || '—';
+    var msg = 'طلب حجز جديد%0A---------------%0Aالخدمة: ' + encodeURIComponent(svc+' ('+price+')')
+      + '%0Aالتاريخ: ' + encodeURIComponent(d) + '%0Aالوقت: ' + encodeURIComponent(t)
+      + '%0Aالاسم: ' + encodeURIComponent(n) + '%0Aالهاتف: ' + encodeURIComponent(p)
+      + '%0Aملاحظات: ' + encodeURIComponent(note);
+    window.open('https://wa.me/9647502331665?text=' + msg, '_blank');
+  });
+</script>
+</body>
+</html>
