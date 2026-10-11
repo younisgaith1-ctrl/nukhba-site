@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://younisgaith1-ctrl.github.io/nukhba-site/sitemap.xml
