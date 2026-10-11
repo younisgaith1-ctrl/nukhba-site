@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منيو تفاعلي — نموذج | نخبة ستوديو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0b0f14;--card:#121821;--line:#1e2836;--gold:#e0a94b;--gold2:#f3c677;--text:#eef3f9;--muted:#93a3b6;--acc:#41d67a}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:96px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header{position:relative;text-align:center;padding:70px 0 46px;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 360px at 50% -10%,rgba(224,169,75,.18),transparent 70%)}
+  .badge{display:inline-block;padding:7px 18px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--gold2);font-size:14px;margin-bottom:20px}
+  h1{font-size:clamp(30px,6vw,52px);font-weight:900;line-height:1.2}
+  h1 span{color:var(--gold)}
+  header p{color:var(--muted);max-width:520px;margin:16px auto 0}
+  .demo-note{max-width:1000px;margin:0 auto;padding:12px 20px}
+  .demo-note .inner{background:rgba(65,214,122,.08);border:1px solid rgba(65,214,122,.25);border-radius:12px;padding:12px 18px;font-size:14px;color:var(--acc);text-align:center}
+  .cats{position:sticky;top:0;z-index:20;background:rgba(11,15,20,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:18px}
+  .cats .wrap{display:flex;gap:10px;overflow-x:auto;padding:14px 20px}
+  .cat{white-space:nowrap;padding:9px 20px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;font-family:inherit;font-size:15px;transition:.15s}
+  .cat.on{background:var(--gold);border-color:var(--gold);color:#171006;font-weight:800}
+  main{max-width:1000px;margin:0 auto;padding:34px 20px}
+  .sec-title{font-size:22px;font-weight:800;margin:26px 0 16px;display:flex;align-items:center;gap:10px}
+  .items{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;transition:border-color .15s}
+  .item:hover{border-color:#2a3a4e}
+  .item .row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .item h3{font-size:17px}
+  .item .desc{color:var(--muted);font-size:13.5px;margin-top:3px}
+  .item .price{color:var(--gold2);font-weight:900;white-space:nowrap;font-size:16px}
+  .add{margin-top:auto;padding:11px;border-radius:11px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;font-family:inherit;font-weight:700;font-size:14.5px;transition:.15s}
+  .add:hover{border-color:var(--gold);color:var(--gold2)}
+  .add.in{background:rgba(65,214,122,.12);border-color:var(--acc);color:var(--acc)}
+  .cartbar{position:fixed;bottom:0;right:0;left:0;background:var(--card);border-top:1px solid var(--line);padding:14px 20px;z-index:40;box-shadow:0 -10px 30px rgba(0,0,0,.4)}
+  .cartbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .cartbar .info{font-size:15px}
+  .cartbar .info b{color:var(--gold2)}
+  .checkout{padding:13px 30px;border-radius:12px;background:var(--acc);color:#04120a;border:0;font-family:inherit;font-weight:900;font-size:15.5px;cursor:pointer}
+  .checkout:disabled{opacity:.4;cursor:not-allowed}
+  .toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--acc);color:#04120a;font-weight:800;padding:11px 24px;border-radius:99px;opacity:0;transition:.25s;z-index:60;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  footer{text-align:center;color:var(--muted);font-size:13.5px;padding:40px 20px 10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">📍 منيو كامل • اطلب بضغطة واحدة</span>
+    <h1>طعم البيت الأصيل<br><span>على بُعد نقرة واحدة</span></h1>
+    <p>أطباق طازجة يوميًا، ومشاوٍ على الحطب، وتوصيل سريع لباب بيتك.</p>
+  </div>
+</header>
+
+<div class="demo-note">
+  <div class="inner">هذا نموذج توضيحي من <b>نخبة ستوديو</b> — أضف أصنافًا إلى السلة ثم اضغط «إرسال الطلب» لترى كيف يصل الطلب عبر واتساب.</div>
+</div>
+
+<div class="cats">
+  <div class="wrap" id="cats"></div>
+</div>
+
+<main id="menu"></main>
+
+<div class="cartbar">
+  <div class="wrap">
+    <div class="info">🛒 <span id="count">0</span> صنف — الإجمالي: <b id="total">0</b> $</div>
+    <button class="checkout" id="checkout" disabled>إرسال الطلب عبر واتساب</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">تمت الإضافة ✓</div>
+
+<footer>© 2026 نخبة ستوديو — نموذج توضيحي</footer>
+
+<script>
+// ===== بيانات المنيو (قابلة للتعديل لكل عميل) =====
+const DATA = [
+  { id:"main", name:"الأطباق الرئيسية", items:[
+    { name:"مندي لحم", desc:"أرز بسمتي، لحم بلدي، صلصة الدقّوس", price:12000 },
+    { name:"مندي دجاج", desc:"دجاج متبّل مع البصل المحمّر", price:8500 },
+    { name:"كبسة دجاج", desc:"بهارات خاصة ومخلل البيت", price:9000 },
+    { name:"قوزي لحم", desc:"لحم غنم طازج مع أرز محشي", price:15000 },
+  ]},
+  { id:"grill", name:"المشاوي", items:[
+    { name:"مشاوي مشكّلة", desc:"كباب، شيش طاووق، أوصال", price:16000 },
+    { name:"كباب عراقي", desc:"لحم مفروم طازج على الفحم", price:13000 },
+    { name:"شيش طاووق", desc:"دجاج متبّل بالليمون والثوم", price:11000 },
+  ]},
+  { id:"side", name:"المقبلات", items:[
+    { name:"فتوش", desc:"خضار طازجة مع خبز محمّص", price:3000 },
+    { name:"حمص بالطحينة", desc:"يقدّم مع زيت الزيتون", price:3000 },
+    { name:"متبل باذنجان", desc:"باذنجان مشوي مع الطحينة", price:3500 },
+  ]},
+  { id:"drink", name:"المشروبات", items:[
+    { name:"شاي عراقي", desc:"على الطريقة التقليدية", price:1000 },
+    { name:"قهوة عربية", desc:"بالهيل، تقدم في دلّة", price:2000 },
+    { name:"عصير طازج", desc:"برتقال / ليمون بالنعناع", price:3000 },
+    { name:"ماء", desc:"قنينة 500 مل", price:500 },
+  ]},
+];
+
+const WHATSAPP = "9647502331665"; // رقم صاحب المحل (هنا الرقم المخصص للنموذج)
+const cart = {}; // name -> {price, qty}
+
+const catsEl = document.getElementById("cats");
+const menuEl = document.getElementById("menu");
+const countEl = document.getElementById("count");
+const totalEl = document.getElementById("total");
+const checkoutBtn = document.getElementById("checkout");
+const toast = document.getElementById("toast");
+
+let activeCat = "all";
+
+function renderCats(){
+  const cats = [{id:"all",name:"كل الأصناف"}, ...DATA.map(s=>({id:s.id,name:s.name}))];
+  catsEl.innerHTML = cats.map(c=>`<button class="cat ${c.id===activeCat?'on':''}" data-id="${c.id}">${c.name}</button>`).join("");
+}
+function renderMenu(){
+  const secs = activeCat==="all" ? DATA : DATA.filter(s=>s.id===activeCat);
+  menuEl.innerHTML = secs.map(s=>`
+    <div class="sec-title">${s.name}</div>
+    <div class="items">
+      ${s.items.map(it=>`
+        <div class="item">
+          <div class="row">
+            <div><h3>${it.name}</h3><div class="desc">${it.desc}</div></div>
+            <div class="price">${it.price.toLocaleString('en-US')} د.ع</div>
+          </div>
+          <button class="add" data-name="${it.name}" data-price="${it.price}">أضِف للسلة +</button>
+        </div>`).join("")}
+    </div>`).join("");
+}
+function updateBar(){
+  let count=0,total=0;
+  for(const k in cart){count+=cart[k].qty;total+=cart[k].qty*cart[k].price;}
+  countEl.textContent=count;
+  totalEl.textContent=total.toLocaleString('en-US');
+  checkoutBtn.disabled = count===0;
+}
+function showToast(msg){
+  toast.textContent=msg; toast.classList.add("show");
+  clearTimeout(showToast.t);
+  showToast.t=setTimeout(()=>toast.classList.remove("show"),1300);
+}
+
+document.addEventListener("click", (e)=>{
+  const cat = e.target.closest(".cat");
+  if(cat){ activeCat=cat.dataset.id; renderCats(); renderMenu(); return; }
+  const add = e.target.closest(".add");
+  if(add){
+    const name=add.dataset.name, price=+add.dataset.price;
+    if(!cart[name]) cart[name]={price,qty:0};
+    cart[name].qty++;
+    updateBar();
+    add.classList.add("in"); add.textContent="في السلة ✓";
+    showToast("تمت إضافة: "+name);
+    return;
+  }
+});
+
+checkoutBtn.addEventListener("click", ()=>{
+  let lines=[], total=0, count=0;
+  for(const k in cart){ const c=cart[k]; lines.push(`• ${k} ×${c.qty} = ${(c.qty*c.price).toLocaleString('en-US')} د.ع`); total+=c.qty*c.price; count+=c.qty; }
+  const msg = `مرحبًا 👋 أريد طلب:\n\n${lines.join("\n")}\n\nالعدد: ${count}\nالإجمالي: ${total.toLocaleString('en-US')} د.ع`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
+});
+
+renderCats(); renderMenu(); updateBar();
+</script>
+</body>
+</html>

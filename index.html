@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نخبة ستوديو | مواقع ومتاجر وأنظمة طلبات للأنشطة العربية</title>
+<meta name="description" content="نخبة ستوديو — نبني مواقع سريعة، متاجر إلكترونية، منيو تفاعلي وأنظمة طلبات، وأتمتة واتساب. تسليم سريع، أسعار واضحة، دعم عراقي/عربي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#080b10;--bg2:#0d1219;--card:#121924;--line:#1e2836;
+    --acc:#41d67a;--acc2:#19b45a;--gold:#e8b85a;
+    --text:#eef3f9;--muted:#94a4b8;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  a{color:inherit}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(8,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-weight:900;font-size:20px;letter-spacing:.3px}
+  .logo b{color:var(--acc)}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:15px;transition:color .2s}
+  .navlinks a:hover{color:var(--text)}
+  @media(max-width:720px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:96px 0 78px;text-align:center}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 400px at 50% -8%,rgba(65,214,122,.16),transparent 68%);pointer-events:none}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--acc);font-size:14px;margin-bottom:24px}
+  h1{font-size:clamp(32px,6.4vw,62px);font-weight:900;line-height:1.18;letter-spacing:-.5px}
+  h1 span{background:linear-gradient(90deg,var(--acc),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);max-width:640px;margin:20px auto 0;font-size:18px}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .btn{padding:15px 36px;border-radius:14px;font-weight:800;text-decoration:none;font-size:16px;transition:transform .15s,box-shadow .15s;display:inline-block}
+  .btn.p{background:var(--acc);color:#04120a;box-shadow:0 12px 34px rgba(65,214,122,.3)}
+  .btn.p:hover{transform:translateY(-2px)}
+  .btn.s{background:transparent;border:1px solid var(--line);color:var(--text)}
+  .btn.s:hover{border-color:var(--acc)}
+
+  /* TRUST BAR */
+  .bar{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:52px;color:var(--muted);font-size:15px}
+  .bar div{display:flex;align-items:center;gap:9px}
+  .bar b{color:var(--text)}
+
+  /* SECTIONS */
+  section{padding:70px 0}
+  .eyebrow{color:var(--acc);font-weight:800;font-size:15px;text-align:center;margin-bottom:8px}
+  h2{font-size:clamp(26px,4.4vw,40px);text-align:center;font-weight:900;margin-bottom:10px}
+  .lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 46px;font-size:17px}
+
+  /* CARDS */
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .18s,border-color .18s}
+  .card:hover{transform:translateY(-4px);border-color:#2a3a4e}
+  .card .ic{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;font-size:26px;background:rgba(65,214,122,.1);border:1px solid rgba(65,214,122,.25);margin-bottom:16px}
+  .card h3{font-size:19px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* PRICING */
+  .prices{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;position:relative;display:flex;flex-direction:column}
+  .plan.pop{border-color:var(--acc);box-shadow:0 0 0 1px rgba(65,214,122,.3),0 20px 50px rgba(65,214,122,.08)}
+  .tag{position:absolute;top:-13px;right:24px;background:var(--acc);color:#04120a;font-size:12.5px;font-weight:800;padding:5px 14px;border-radius:99px}
+  .plan h3{font-size:20px;margin-bottom:4px}
+  .plan .price{font-size:32px;font-weight:900;color:var(--acc);margin:6px 0 2px}
+  .plan .price small{font-size:15px;color:var(--muted);font-weight:600}
+  .plan ul{list-style:none;margin:18px 0 24px;display:flex;flex-direction:column;gap:11px}
+  .plan li{color:var(--muted);font-size:15px;display:flex;gap:10px;align-items:flex-start}
+  .plan li::before{content:"✓";color:var(--acc);font-weight:900;flex-shrink:0}
+  .plan .btn{margin-top:auto;text-align:center}
+
+  /* WORK */
+  .work{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;transition:transform .18s}
+  .shot:hover{transform:translateY(-4px)}
+  .shot .top{height:150px;display:grid;place-items:center;font-size:54px;background:linear-gradient(135deg,#132033,#0c141d)}
+  .shot .body{padding:22px}
+  .shot h3{font-size:18px;margin-bottom:6px}
+  .shot p{color:var(--muted);font-size:14.5px}
+  .shot .go{color:var(--acc);font-weight:700;font-size:14.5px;margin-top:12px;display:inline-block}
+
+  /* STEPS */
+  .steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .step{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .step .n{font-size:15px;font-weight:900;color:var(--acc);margin-bottom:8px}
+  .step h3{font-size:17px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  /* CTA */
+  .cta{background:linear-gradient(135deg,rgba(65,214,122,.12),rgba(232,184,90,.08));border:1px solid var(--line);border-radius:24px;padding:52px 30px;text-align:center}
+  .cta h2{margin-bottom:12px}
+  .cta p{color:var(--muted);max-width:560px;margin:0 auto 28px;font-size:17px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:46px 0 40px;color:var(--muted);font-size:14.5px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">نخبة<b>.</b>ستوديو</div>
+    <div class="navlinks">
+      <a href="#services">الخدمات</a>
+      <a href="#prices">الأسعار</a>
+      <a href="#work">أعمالنا</a>
+      <a href="#how">طريقة العمل</a>
+      <a href="#contact">تواصل</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="pill">⚡ تسليم سريع · أسعار واضحة · دعم عربي</div>
+    <h1>نبني لك موقعًا <span>يجلب طلبات فعلية</span><br>لا مجرد شكل جميل</h1>
+    <p class="sub">مواقع ومتاجر إلكترونية، منيو تفاعلي وأنظمة طلبات، وأتمتة واتساب — للأنشطة والمشاريع في العراق والخليج.</p>
+    <div class="btns">
+      <a class="btn p" href="https://wa.me/9647502331665" target="_blank" rel="noopener">اطلب عرض سعر مجاني</a>
+      <a class="btn s" href="#work">شاهد أعمالنا</a>
+    </div>
+    <div class="bar">
+      <div>📱 <b>متوافق</b> مع الجوال</div>
+      <div>⚡ <b>تحميل</b> أقل من ثانية</div>
+      <div>💬 <b>طلب</b> مباشر عبر واتساب</div>
+      <div>🔒 <b>تسليم</b> قبل الدفع الكامل</div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">خدماتنا</div>
+    <h2>كل ما يحتاجه نشاطك ليتحول رقميًا</h2>
+    <p class="lead">من الفكرة إلى رابط يعمل على الإنترنت — نتكفل بالتصميم والبرمجة والربط والمحتوى.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🌐</div><h3>صفحة هبوط احترافية</h3><p>صفحة واحدة تجمع خدماتك، الموقع على الخريطة، وزر واتساب مباشر — برابط واحد جاهز للمشاركة.</p></div>
+      <div class="card"><div class="ic">🛒</div><h3>متجر إلكتروني</h3><p>عرض المنتجات، سلة، وأنظمة طلب ودفع. مناسب للملابس، الإلكترونيات، والهدايا.</p></div>
+      <div class="card"><div class="ic">🍽️</div><h3>منيو تفاعلي ونظام طلبات</h3><p>منيو رقمي عبر QR مع سلة والطلب عبر واتساب — للمطاعم والكافيهات.</p></div>
+      <div class="card"><div class="ic">📅</div><h3>نظام حجز مواعيد</h3><p>للعيادات والصالونات: عرض الخدمات والأسعار وحجز الموعد تلقائيًا.</p></div>
+      <div class="card"><div class="ic">🏠</div><h3>موقع عرض عقارات/سيارات</h3><p>كتالوج بالأقسام والصور وتفاصيل كل عرض مع تواصل مباشر.</p></div>
+      <div class="card"><div class="ic">🤖</div><h3>أتمتة واتساب</h3><p>ردود تلقائية، ترحيب بالعملاء، وتنظيم الطلبات دون تدخل يدوي.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="prices" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">الأسعار</div>
+    <h2>عروض واضحة بدون مفاجآت</h2>
+    <p class="lead">تدفع بعد أن ترى النتيجة — ونعطيك معاينة قبل أي دفع.</p>
+    <div class="prices">
+      <div class="plan">
+        <h3>باقة البداية</h3>
+        <div class="price">60,000 <small>د.ع</small></div>
+        <p style="color:var(--muted)">≈ 45$ · للأنشطة الصغيرة</p>
+        <ul>
+          <li>صفحة هبوط كاملة</li>
+          <li>تفعيل الموقع على الخريطة</li>
+          <li>زر واتساب مباشر</li>
+          <li>تصميم متوافق مع الجوال</li>
+          <li>تسليم خلال 48 ساعة</li>
+        </ul>
+        <a class="btn s" href="https://wa.me/9647502331665?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9" target="_blank" rel="noopener">اطلب هذه الباقة</a>
+      </div>
+      <div class="plan pop">
+        <span class="tag">الأكثر طلبًا</span>
+        <h3>باقة الأعمال</h3>
+        <div class="price">150,000 <small>د.ع</small></div>
+        <p style="color:var(--muted)">≈ 115$ · للمطاعم والمتاجر</p>
+        <ul>
+          <li>منيو تفاعلي / كتالوج منتجات</li>
+          <li>سلة وطلب عبر واتساب</li>
+          <li>رمز QR للطاولات</li>
+          <li>معرض صور وأقسام</li>
+          <li>لوحة تعديل بسيطة</li>
+          <li>تسليم خلال 3–5 أيام</li>
+          <li>شهر دعم مجاني</li>
+        </ul>
+        <a class="btn p" href="https://wa.me/9647502331665?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84" target="_blank" rel="noopener">اطلب هذه الباقة</a>
+      </div>
+      <div class="plan">
+        <h3>باقة متقدمة</h3>
+        <div class="price">من 300,000 <small>د.ع</small></div>
+        <p style="color:var(--muted)">≈ 230$+ · متجر أو نظام مخصص</p>
+        <ul>
+          <li>متجر إلكتروني كامل</li>
+          <li>نظام حجز/طلبات مخصص</li>
+          <li>ربط قاعدة بيانات</li>
+          <li>أتمتة واتساب وردود</li>
+          <li>تسليم على مراحل</li>
+        </ul>
+        <a class="btn s" href="https://wa.me/9647502331665?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D8%A7%D9%82%D8%A9%20%D9%85%D8%AA%D9%82%D8%AF%D9%85%D8%A9" target="_blank" rel="noopener">اطلب هذه الباقة</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">أعمالنا</div>
+    <h2>نماذج حيّة — جرّبها بنفسك</h2>
+    <p class="lead">هذه نماذج حقيقية تعمل الآن. افتح الرابط من جوالك وشاهد التجربة كاملة.</p>
+    <div class="work">
+      <a class="shot" href="./menu.html" target="_blank" rel="noopener">
+        <div class="top">🍽️</div>
+        <div class="body">
+          <h3>منيو تفاعلي + سلة طلبات</h3>
+          <p>منيو رقمي بقوائم وأسعار، سلة، وإرسال الطلب عبر واتساب بضغطة.</p>
+          <span class="go">افتح النموذج ←</span>
+        </div>
+      </a>
+      <a class="shot" href="./menu.html" target="_blank" rel="noopener">
+        <div class="top">🛍️</div>
+        <div class="body">
+          <h3>كتالوج متجر إلكتروني</h3>
+          <p>عرض منتجات بأقسام وصور وأسعار مع طلب مباشر.</p>
+          <span class="go">افتح النموذج ←</span>
+        </div>
+      </a>
+      <a class="shot" href="./menu.html" target="_blank" rel="noopener">
+        <div class="top">📍</div>
+        <div class="body">
+          <h3>صفحة هبوط لنشاط محلي</h3>
+          <p>صفحة واحدة تجمع الخدمات والموقع وزر التواصل.</p>
+          <span class="go">افتح النموذج ←</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">طريقة العمل</div>
+    <h2>أربع خطوات بسيطة</h2>
+    <p class="lead">واضحة من البداية — تعرف السعر والمدة قبل أن نبدأ.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>تواصل</h3><p>ترسل لنا فكرة نشاطك واحتياجك عبر واتساب.</p></div>
+      <div class="step"><div class="n">2</div><h3>معاينة مجانية</h3><p>نعرض عليك نموذجًا حقيقيًا قبل أي دفع.</p></div>
+      <div class="step"><div class="n">3</div><h3>التنفيذ</h3><p>نبني الموقع/النظام ونسلّمك الرابط.</p></div>
+      <div class="step"><div class="n">4</div><h3>الدفع والدعم</h3><p>تدفع بعد رضاك، ونبقى معك للدعم شهرًا.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <h2>جاهز يبدأ نشاطك يبيع أونلاين؟</h2>
+      <p>أرسل لنا رسالة الآن، وسنجهّز لك معاينة مجانية خلال 24 ساعة — بدون أي التزام.</p>
+      <div class="btns">
+        <a class="btn p" href="https://wa.me/9647502331665" target="_blank" rel="noopener">🟢 تواصل عبر واتساب</a>
+        <a class="btn s" href="mailto:younisgaith1@gmail.com">✉️ راسلنا بالبريد</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 نخبة ستوديو — جميع الحقوق محفوظة.</div>
+    <div style="display:flex;gap:20px">
+      <a href="https://wa.me/9647502331665" target="_blank" rel="noopener">واتساب</a>
+      <a href="mailto:younisgaith1@gmail.com">البريد</a>
+      <a href="#services">الخدمات</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
